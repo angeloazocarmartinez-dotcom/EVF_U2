@@ -36,6 +36,7 @@ npm run lint     # Revisa el código con ESLint
 ## Estructura del proyecto
 
 ```
+├── .env           # Variables de entorno (crear)
 src/
 ├── App.jsx        # Componente principal
 ├── main.jsx       # Punto de entrada (no tocar)
@@ -87,11 +88,37 @@ Y se usa desde un componente:
 import { obtenerUsuarios } from '../services/usuario'
 ```
 
+### `.env` — Variables de entorno
+
+Crea un archivo `.env` en la **raíz del proyecto** (al lado de `package.json`) con la URL del backend:
+
+```env
+VITE_API_URL=http://localhost:3000/api
+```
+
+Reglas importantes:
+
+- Las variables **deben partir con `VITE_`** para que Vite las exponga al código.
+- Se leen con `import.meta.env.NOMBRE`, por ejemplo: `import.meta.env.VITE_API_URL`.
+- Si cambias el `.env`, reinicia el servidor (`npm run dev`).
+
+Ejemplo de uso en `src/services/usuario.js`:
+
+```js
+const API_URL = import.meta.env.VITE_API_URL
+
+export async function obtenerUsuarios() {
+  const res = await fetch(`${API_URL}/usuarios`)
+  return res.json()
+}
+```
+
 ### Regla simple
 
 | Qué necesitas | Dónde va |
 |---|---|
 | Una pantalla/página de la app | `src/pages/` |
 | Llamadas al backend (API) | `src/services/` |
+| URL del backend / variables de entorno | `.env` |
 | Componente principal / rutas | `src/App.jsx` |
 | Estilos | Clases de Tailwind + `src/index.css` |

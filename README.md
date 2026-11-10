@@ -115,10 +115,10 @@ export async function obtenerUsuarios() {
 
 ### Regla simple
 
-| Qué necesitas | Dónde va |
-|---|---|
-| Una pantalla/página de la app | `src/pages/` |
-| Llamadas al backend (API) | `src/services/` |
-| URL del backend / variables de entorno | `.env` |
-| Componente principal / rutas | `src/App.jsx` |
-| Estilos | Clases de Tailwind + `src/index.css` |
+| Qué necesitas                         | Dónde va                              |
+| -------------------------------------- | -------------------------------------- |
+| Una pantalla/página de la app         | `src/pages/`                         |
+| Llamadas al backend (API)              | `src/services/`                      |
+| URL del backend / variables de entorno | `.env`                               |
+| Componente principal / rutas           | `src/App.jsx`                        |
+| Estilos                                | Clases de Tailwind + `src/index.css` |
